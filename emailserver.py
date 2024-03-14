@@ -37,3 +37,4 @@ def send_email(name, email):
     message["To"] = email
     message["Subject"] = "Application Received"
 
+send_email("Tolib","***REMOVED***")
