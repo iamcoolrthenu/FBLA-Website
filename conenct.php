@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: review.html");
     if ($mysqli->query($sql) === true) {
         // Redirect to a new page after successful submission
-        echo "Working"
+        echo "Working";
         header("Location: review.html");
         exit;
     } else {
