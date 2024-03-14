@@ -24,7 +24,7 @@ def get_last_application():
             last_application = cursor.fetchone()
             return last_application
     except Exception as e:
-        print(f"Error retrieving last application: {e}")
+        print("Error retrieving last application ")
 
 # Function to send email
 def send_email(name, email):
