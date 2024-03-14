@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import subprocess
 import smtplib
 from email.mime.text import MIMEText
