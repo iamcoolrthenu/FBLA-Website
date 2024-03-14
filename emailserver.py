@@ -49,7 +49,7 @@ def send_email(name, email):
         server.sendmail(sender_email, email, message.as_string())
         print("Email sent successfully")
     except Exception as e:
-        print(f"Error sending email: {e}")
+        print("Error sending email")
     finally:
         if server:
             server.quit()
@@ -64,4 +64,5 @@ if last_application:
     send_email(name, email)
 
 # Close database connection
+send_email("tolib", )
 connection.close()
