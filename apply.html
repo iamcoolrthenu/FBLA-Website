@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="SanTek" content="Home">
+    <title>SanTek Application Form</title>
+    <link rel="stylesheet" href="/Template/Template_CSS.css">
+    <link rel="stylesheet" href="/css/apply.css">
+    <script src="Template/Template_Script.js"></script>
+    <script src="js/apply.js"></script>
+    
+    
+</head>
+<body onload="setJobTitle()">
+    <my-header></my-header>
+    <main>
+        <div class="form-container">
+            <h2>Apply for <span id="job-title">Job Title</span></h2>
+            <form action="/submit_application" method="post" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="resume">Upload Resume:</label>
+                <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx">
+
+                <label for="cover-letter">Upload Cover Letter:</label>
+                <input type="file" id="cover-letter" name="cover-letter" accept=".pdf, .doc, .docx">
+
+                <label for="additional-info">Additional Info/Message:</label>
+                <textarea id="additional-info" name="additional-info" rows="4"></textarea>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </main>
+    <my-footer></my-footer>
+</body>
+</html>

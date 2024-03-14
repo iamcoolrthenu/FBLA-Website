@@ -1,0 +1,48 @@
+li {
+    display: inline-block;
+    
+}
+
+nav {
+    
+    padding-left:20px ;
+}
+
+
+
+
+html, body {
+   background-color: rgb(23, 26, 27);
+  
+
+    
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+footer {
+    color:white;
+}
+header{
+    padding-left:250px;  
+    color:white;
+    
+}
+a{
+  text-decoration: none;  
+  color: white;
+}
+#W2 {
+    padding-left:100px;
+    color: aqua;
+}
+.logo{
+    font-size:50px;
+}
+.desc{
+    font-size: 30px;
+    padding-left:300px;
+}
