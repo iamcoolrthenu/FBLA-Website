@@ -1,12 +1,13 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import config
 
 # SMTP server configuration
-smtp_server = "smtp.tolibsanni.com"
+smtp_server = "***REMOVED***"
 port = ***REMOVED***  # For starttls
 sender_email = "***REMOVED***"
-password = "***REMOVED***"
+password = config.email_password
 receiver_email = "***REMOVED***"
 
 # Create a multipart message and set headers
@@ -21,14 +22,14 @@ message.attach(MIMEText(body, "plain"))
 
 # Connect to the server and send the email
 server = None
-#try:
-server = smtplib.SMTP(smtp_server,port)
-server.starttls() # Secure the connection
-server.login(sender_email, password)
-# Send the email
-server.sendmail(sender_email, receiver_email, message.as_string())
-print("Email sent successfully")
-#except Exception as e:
-#    print(f"Error: {e}")
-#finally:
-#    server.quit()
+try:
+    server = smtplib.SMTP(smtp_server,port)
+    server.starttls() # Secure the connection
+    server.login(sender_email, password)
+    # Send the email
+    server.sendmail(sender_email, receiver_email, message.as_string())
+    print("Email sent successfully")
+except Exception as e:
+    print(f"Error: {e}")
+finally:
+    server.quit()

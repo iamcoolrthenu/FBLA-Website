@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 // SMTP server configuration
 let transporter = nodemailer.createTransport({
-    host: "smtp.tolibsanni.tech",
+    host: "***REMOVED***",
     port: ***REMOVED***,
     secure: false, // true for 465, false for other ports
     auth: {
