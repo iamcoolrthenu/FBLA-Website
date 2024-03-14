@@ -2,7 +2,7 @@
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database connection
-    $mysqli = new mysqli('localhost', 'root', '***REMOVED***', '***REMOVED***');
+    $mysqli = new mysqli('localhost', '***REMOVED***', '***REMOVED***', '***REMOVED***');
 
     // Check connection
     if ($mysqli->connect_errno) {
@@ -25,14 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cover_letter_tmp = $_FILES['cover-letter']['tmp_name'];
     $cover_letter_path = "uploads/" . $cover_letter;
     move_uploaded_file($cover_letter_tmp, $cover_letter_path);
-
+    echo "Thank you, $name, for your application!";
     // Insert data into database
     $sql = "INSERT INTO ***REMOVED*** (name, phone, email, resume, cover_letter, additional_info) 
             VALUES ('$name', '$phone', '$email', '$resume_path', '$cover_letter_path', '$additional_info')";
-
+    header("Location: review.html");
     if ($mysqli->query($sql) === true) {
         // Redirect to a new page after successful submission
-        echo "<script>window.location.href = 'review.html';</script>";
+        header("Location: review.html");
         exit;
     } else {
         echo "Error: " . $sql . "<br>" . $mysqli->error;
