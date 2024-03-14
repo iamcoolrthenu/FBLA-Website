@@ -38,7 +38,7 @@ def send_email(name, email):
     message["To"] = email
     message["Subject"] = "Application Received"
 
-    body = f"Hello {name},\n\nThank you for your application."
+    body = "Hello {name},\n\nThank you for your application."
     message.attach(MIMEText(body, "plain"))
 
     server = None
