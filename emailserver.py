@@ -21,14 +21,14 @@ message.attach(MIMEText(body, "plain"))
 
 # Connect to the server and send the email
 server = None
-try:
-    server = smtplib.SMTP(smtp_server,port)
-    server.starttls() # Secure the connection
-    server.login(sender_email, password)
-    # Send the email
-    server.sendmail(sender_email, receiver_email, message.as_string())
-    print("Email sent successfully")
-except Exception as e:
-    print(f"Error: {e}")
-finally:
-    server.quit()
+#try:
+server = smtplib.SMTP(smtp_server,port)
+server.starttls() # Secure the connection
+server.login(sender_email, password)
+# Send the email
+server.sendmail(sender_email, receiver_email, message.as_string())
+print("Email sent successfully")
+#except Exception as e:
+#    print(f"Error: {e}")
+#finally:
+#    server.quit()
