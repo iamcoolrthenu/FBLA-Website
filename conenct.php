@@ -33,9 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($mysqli->query($sql) === true) {
         // Redirect to a new page after successful submission
         header("Location: review.html");
-        exec("python /path/to/your/python_script.py", $outputArray, $returnVar);
-
-
+        exec("python emailserver.py")
         exit;
     } else {
         echo "Error: " . $sql . "<br>" . $mysqli->error;
