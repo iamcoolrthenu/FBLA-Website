@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cover_letter_tmp = $_FILES['cover-letter']['tmp_name'];
     $cover_letter_path = "uploads/" . $cover_letter;
     move_uploaded_file($cover_letter_tmp, $cover_letter_path);
-    echo "Thank you, $name, for your application!";
+    //echo "Thank you, $name, for your application!";
     // Insert data into database
     $sql = "INSERT INTO ***REMOVED*** (name, phone, email, resume, cover_letter, additional_info) 
             VALUES ('$name', '$phone', '$email', '$resume_path', '$cover_letter_path', '$additional_info')";
