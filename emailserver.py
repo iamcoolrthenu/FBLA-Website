@@ -1,30 +1,28 @@
+import subprocess
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import pymysql
 import config
-
-# Connect to the MySQL database
-connection = pymysql.connect(
-    host='localhost',
-    user='***REMOVED***',
-    password='***REMOVED***',
-    database='***REMOVED***',
-    charset='utf8mb4',
-    cursorclass=pymysql.cursors.DictCursor
-)
 
 # Function to retrieve data from the last row of the database
 def get_last_application():
     try:
-        with connection.cursor() as cursor:
-            # Select the last row from the ***REMOVED*** table
-            sql = "SELECT * FROM ***REMOVED*** ORDER BY id DESC LIMIT 1"
-            cursor.execute(sql)
-            last_application = cursor.fetchone()
-            return last_application
+        # Execute MySQL command to select the last row from the ***REMOVED*** table
+        sql_command = 'mysql -u ***REMOVED*** -p***REMOVED*** -e "USE ***REMOVED***; SELECT * FROM ***REMOVED*** ORDER BY id DESC LIMIT 1;"'
+        result = subprocess.run(sql_command, shell=True, capture_output=True, text=True)
+        last_application_data = result.stdout.strip().split('\n')[1].split('\t')
+        last_application = {
+            'id': int(last_application_data[0]),
+            'name': last_application_data[1],
+            'phone': last_application_data[2],
+            'email': last_application_data[3],
+            'resume': last_application_data[4],
+            'cover_letter': last_application_data[5],
+            'additional_info': last_application_data[6],
+        }
+        return last_application
     except Exception as e:
-        print("Error retrieving last application ")
+        print("Error retrieving last application: ", e)
 
 # Function to send email
 def send_email(name, email):
@@ -38,31 +36,3 @@ def send_email(name, email):
     message["To"] = email
     message["Subject"] = "Application Received"
 
-    body = "Hello {name},\n\nThank you for your application."
-    message.attach(MIMEText(body, "plain"))
-
-    server = None
-    try:
-        server = smtplib.SMTP(smtp_server, port)
-        server.starttls()
-        server.login(sender_email, password)
-        server.sendmail(sender_email, email, message.as_string())
-        print("Email sent successfully")
-    except Exception as e:
-        print("Error sending email")
-    finally:
-        if server:
-            server.quit()
-
-# Retrieve data from the last application
-last_application = get_last_application()
-if last_application:
-    name = last_application['name']
-    email = last_application['email']
-
-    # Send email confirmation
-    send_email(name, email)
-
-# Close database connection
-send_email("tolib", )
-connection.close()
