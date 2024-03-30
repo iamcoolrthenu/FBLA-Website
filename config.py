@@ -12,3 +12,4 @@ Email_CONFIG = {
     'database': '***REMOVED***',
     'table': '***REMOVED***'
 }
+gemini_key = "***REMOVED***"
