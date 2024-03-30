@@ -10,7 +10,7 @@ smtp_server = config.Email_CONFIG['smtp_server']
 port = config.Email_CONFIG['port']  # For starttls
 sender_email = config.Email_CONFIG['sender_email']
 password = config.Email_CONFIG['password']
-receiver_email = "toli"
+#receiver_email = "tolib"
 
 def get_last_application():
     try:
