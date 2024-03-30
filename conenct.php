@@ -18,12 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // File uploads
     $resume = $_FILES['resume']['name'];
     $resume_tmp = $_FILES['resume']['tmp_name'];
-    $resume_path = "uploads/" . $resume;
+    $resume_path = "~/Documents/uploads/" . $resume;
     move_uploaded_file($resume_tmp, $resume_path);
 
     $cover_letter = $_FILES['cover-letter']['name'];
     $cover_letter_tmp = $_FILES['cover-letter']['tmp_name'];
-    $cover_letter_path = "uploads/" . $cover_letter;
+    $cover_letter_path = "~/Documents/uploads/cover-letters" . $cover_letter;
     move_uploaded_file($cover_letter_tmp, $cover_letter_path);
     //echo "Thank you, $name, for your application!";
     // Insert data into database
