@@ -4,10 +4,10 @@ from email.mime.multipart import MIMEMultipart
 import config
 
 # SMTP server configuration
-smtp_server = "***REMOVED***"
-port = ***REMOVED***  # For starttls
-sender_email = "***REMOVED***"
-password = config.email_password
+smtp_server = config.Email_CONFIG['smtp_server']
+port = config.Email_CONFIG['port']  # For starttls
+sender_email = config.Email_CONFIG['sender_email']
+password = config.Email_CONFIG['password']
 receiver_email = "***REMOVED***"
 
 # Create a multipart message and set headers

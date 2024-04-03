@@ -3,3 +3,6 @@ function setJobTitle() {
     const jobTitle = params.get('job');
     document.getElementById('job-title').innerText = jobTitle || 'Job Title';
 }
+function checkElements(){
+    
+}
