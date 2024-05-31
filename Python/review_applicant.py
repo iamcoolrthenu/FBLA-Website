@@ -1,10 +1,10 @@
 import pathlib
 import textwrap
 import textract
-import emailserver
+import Python.emailserver as emailserver
 import google.generativeai as genai
 
-import config
+import Python.config as config
 text = textract.process("TolibSanni-Resume-03-25-24.docx")
 
 GOOGLE_API_KEY = config.gemini_key

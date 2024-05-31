@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import config
+import Python.config as config
 
 # SMTP server configuration
 smtp_server = config.Email_CONFIG['smtp_server']

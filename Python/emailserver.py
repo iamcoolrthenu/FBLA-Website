@@ -3,7 +3,7 @@ import subprocess
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import config
+import Python.config as config
 
 # Function to retrieve data from the last row of the database
 smtp_server = config.Email_CONFIG['smtp_server']
@@ -14,7 +14,7 @@ password = config.Email_CONFIG['password']
 def get_last_application():
     try:
         # Execute MySQL command to select the last row from the ***REMOVED*** table
-        sql_command = f'mysql -u {config.DATABASE_CONFIG['user']} -p {config.DATABASE_CONFIG['password']} -e "USE {config.DATABASE_CONFIG['database']}; SELECT * FROM {config.DATABASE_CONFIG['table']} ORDER BY id DESC LIMIT 1;"' 
+        sql_command = f"mysql -u {config.DATABASE_CONFIG['user']} -p {config.DATABASE_CONFIG['password']} -e \"USE {config.DATABASE_CONFIG['database']}; SELECT * FROM {config.DATABASE_CONFIG['table']} ORDER BY id DESC LIMIT 1;\""
 
         result = subprocess.run(sql_command, shell=True, capture_output=True, text=True)
         last_application_data = result.stdout.strip().split('\n')[1].split('\t')
@@ -47,7 +47,8 @@ def send_email(subject='', body='', bcc='',receiver_email=''):
     server.login(sender_email, password)
     recipients = [receiver_email] + [bcc] if bcc else [receiver_email]
     server.sendmail(sender_email, recipients, message.as_string())
-
+    f = open('email.txt', "w")
+    f.write(f"test")
 def application_received():
     send_email(subject="Application Received", receiver_email=application["email"], body=f"""Dear {application["firstName"]} {application["lastName"]},
 
@@ -63,4 +64,7 @@ Tolib Sanni II
 CEO
 Santek
 {config.Email_CONFIG['sender_email']}""")
+    
+
+
     

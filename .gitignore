@@ -1,2 +1,5 @@
-config.py
-config.php
+.env
+/PHP/config.php/
+/Python/config.py/
+__pycache__/
+.venv/

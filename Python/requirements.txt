@@ -1,0 +1,5 @@
+google-generativeai
+textract
+mysql-connector-python
+Flask
+Werkzeug

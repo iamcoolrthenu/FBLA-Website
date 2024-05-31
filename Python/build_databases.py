@@ -1,5 +1,5 @@
 import mysql.connector
-import config
+import Python.config as config
 
 # Establish connection to MySQL server
 mydb = mysql.connector.connect(
