@@ -1,7 +1,11 @@
 <?php
-require 'config.php';
+require 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    $mysqli = new mysqli(getenv('MYSQL_HOST'), getenv('USER'), getenv('MYSQL_PWD'), getenv('DB_NAME'));
 
     if ($mysqli->connect_errno) {
         die("Failed to connect to MySQL: " . $mysqli->connect_error);

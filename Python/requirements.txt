@@ -3,3 +3,4 @@ textract
 mysql-connector-python
 Flask
 Werkzeug
+python-dotenv

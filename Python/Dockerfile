@@ -6,7 +6,11 @@ ENV ENV_VAR_NAME=${ENV_VAR_NAME}
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
+COPY build_databases.py build_databases.py
+COPY config.py config.py
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN python3 build_databases.py
 
 COPY . /app
 
