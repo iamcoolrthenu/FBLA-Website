@@ -1,6 +1,6 @@
-.form-container {
+.info-box {
     border: 2px solid #3498db;
-    max-width: 600px;
+    width: 1000px;
     margin: auto;
     padding: 20px;
     background-color: #fff;
@@ -8,20 +8,20 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-container label {
+.info-box label {
     display: block;
     margin-bottom: 8px;
 }
 
-.form-container input,
-.form-container textarea {
+.info-box input,
+.info-box textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
     box-sizing: border-box;
 }
 
-.form-container button {
+.info-box button {
     background-color: #4CAF50;
     color: #fff;
     padding: 10px 20px;
@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
-.form-container button:hover {
+.info-box button:hover {
     background-color: #45a049;
+}
+
+.info-box h2 {
+    text-align: center;
 }

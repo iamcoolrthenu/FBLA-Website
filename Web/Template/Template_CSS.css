@@ -46,3 +46,12 @@ a{
     font-size: 30px;
     padding-left:300px;
 }
+
+.info-box {
+    display: none; /* Hide initially */
+}
+
+/* When content is loaded */
+body.loaded .info-box {
+    display: block;
+}

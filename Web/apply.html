@@ -3,8 +3,8 @@
 <head>
     <meta name="SanTek" content="Home">
     <title>SanTek Application Form</title>
-    <link rel="stylesheet" href="/Template/Template_CSS.css">
-    <link rel="stylesheet" href="/css/apply.css">
+    <link rel="stylesheet" href="Template/Template_CSS.css">
+    <link rel="stylesheet" href="css/apply.css">
     <script src="Template/Template_Script.js"></script>
     <script src="js/apply.js"></script>
     
@@ -13,11 +13,12 @@
 <body onload="setJobTitle()">
     <my-header></my-header>
     <main>
-        <div class="form-container">
-            <h2>Apply for <span id="job-title">Job Title</span></h2>
-            <form action="connect.php" method="post" enctype="multipart/form-data">
+        <div class="info-box">
+            <h2 align >Apply for <span id="job-title">Job Title</span></h2>
+            <form action="../PHP/connect.php" method="post" enctype="multipart/form-data">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" required>
+
 
                 <label for="lastName">Last Name:</label>
                 <input type="text" id="lastName" name="lastName" required>
