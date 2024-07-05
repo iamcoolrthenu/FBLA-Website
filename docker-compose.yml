@@ -40,6 +40,7 @@ services:
     environment:
       - DATABASE_HOST=${MYSQL_HOST}
       - DATABASE_USER=${USER}
+      - DATABASE_ROOT_USER='%'
       - DATABASE_PASSWORD=${MYSQL_PWD}
       - DATABASE_NAME=${MYSQL_DATABASE}
       - TABLE1_NAME=${TABLE1}

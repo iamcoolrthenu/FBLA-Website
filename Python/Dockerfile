@@ -7,11 +7,11 @@ WORKDIR /app
 
 COPY requirements.txt requirements.txt
 COPY build_databases.py build_databases.py
-COPY config.py config.py
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-RUN python3 build_databases.py
+RUN pip install --upgrade -r requirements.txt
+
 
 COPY . /app
 
-CMD ["python", "app.py"]
+CMD ["python", "build_databases.py", "app.py"]
+
