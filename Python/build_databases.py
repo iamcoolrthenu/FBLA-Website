@@ -12,10 +12,18 @@ db_password = os.getenv('MYSQL_PWD')
 db_database = os.getenv('MYSQL_DATABASE')
 table1 = os.getenv('TABLE1')
 table2 = os.getenv('TABLE2')
-
+mydb = 0
+y = 0
 # Check if all necessary environment variables are loaded
 if not all([db_host, db_user, db_password, db_database, table1, table2]):
-    raise ValueError("Some environment variables are missing. Please check the .env file.")
+    for x in [db_host, db_user, db_password, db_database, table1, table2]:
+        y += 1
+        try:
+            print(x)
+        except:
+            print(y)
+    raise ValueError("Some environment variables are missing. Please check the .env file." )
+    
 
 try:
     # Establish connection to MySQL server

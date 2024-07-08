@@ -16,20 +16,12 @@ services:
       - ./nginx/ssl.conf:/etc/nginx/conf.d/ssl.conf
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/www/certbot
-
   php:
     build: ./PHP
     volumes:
       - ./PHP:/var/www/html
   mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      USER: ${USER}
-      MYSQL_PWD: ${MYSQL_PWD}
-      MYSQL_HOST: ${MYSQL_HOST}
-      
+    image: mysql:latest
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -38,13 +30,12 @@ services:
     volumes:
       - ./Python:/app
     environment:
-      - DATABASE_HOST=${MYSQL_HOST}
-      - DATABASE_USER=${USER}
-      - DATABASE_ROOT_USER='%'
-      - DATABASE_PASSWORD=${MYSQL_PWD}
-      - DATABASE_NAME=${MYSQL_DATABASE}
-      - TABLE1_NAME=${TABLE1}
-      - TABLE2_NAME=${TABLE2}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - USER=${USER}
+      - MYSQL_PWD=${MYSQL_PWD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - TABLE1=${TABLE1}
+      - TABLE2=${TABLE2}
     depends_on:
       - mysql
     command: sh -c "sleep 10 && python build_databases.py"
@@ -56,7 +47,7 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-
+    restart: always
 volumes:
   mysql-data:
   certbot-etc:
